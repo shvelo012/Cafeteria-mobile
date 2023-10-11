@@ -1,35 +1,23 @@
-import React, { useState } from 'react';
 import HomeScreen from './Screens/HomeScreen';
 import LoginScreen from './Screens/LogInScreen';
 import HomeAdminScreen from './Screens/HomeAdminScreen';
-import { View } from 'react-native';
-enum Screen {
-  HOME,
-  LOGIN,
-  ADMIN_HOME,
-}
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Screens } from './Screens/screenConstants';
+import { NavigationContainer } from './Navigation/NavigationContainer';
+
+
+const stack = createNativeStackNavigator();
 
 const MainContainer: React.FC = () => {
-  const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.HOME);
-
-  const renderScreen = () => {
-    switch (currentScreen) {
-      case Screen.HOME:
-        return <HomeScreen />;
-      case Screen.LOGIN:
-        return <LoginScreen />;
-      case Screen.ADMIN_HOME:
-        return <HomeAdminScreen />;
-      default:
-        return <HomeScreen />;
-    }
-  };
 
   return (
-    <View>
-      {renderScreen()}
-      {/* You can add navigation or buttons to switch between screens */}
-    </View>
+    <NavigationContainer>
+      <stack.Navigator initialRouteName={Screens.HomeScreenName}>
+        <stack.Screen name={Screens.HomeScreenName} component={HomeScreen} options={{ headerShown: false }} />
+        <stack.Screen name={Screens.LoginScreenName} component={LoginScreen} options={{ headerShown: false }} />
+        <stack.Screen name={Screens.HomeAdminScreenName} component={HomeAdminScreen} options={{ headerShown: false }} />
+      </stack.Navigator>
+    </NavigationContainer>
   );
 };
 
