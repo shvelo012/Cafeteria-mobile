@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <g data-name="Group 114">
+        <path data-name="Rectangle 89" transform="rotate(90 14 14)" style="fill:none" d="M0 0h28v28H0z"/>
+        <g data-name="Group 556">
+            <path d="m0 0 6.963 6.963L0 13.926" transform="rotate(180 4.991 10.713)" stroke="#000" style="stroke-linejoin:round;stroke-linecap:round;stroke-width:2px;fill:none"/>
+            <path data-name="Line 13" transform="rotate(90 4.861 19.361)" stroke="#000" style="stroke-linecap:round;stroke-width:2px;fill:none" d="M0 20.24V0"/>
+        </g>
+    </g>
+</svg>

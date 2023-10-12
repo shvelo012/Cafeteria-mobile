@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { navigate } from '../Navigation/utils';
-import { Screens } from './screenConstants';
+import { View, Text, StyleSheet } from 'react-native';
+import { navigate } from '../../Navigation/utils';
+import { Screens } from '../screenConstants';
+
 
 const HomeScreen: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const HomeScreen: React.FC = () => {
       </View>
       {/* Home Screen */}
       <View>
-  
+
       </View>
     </>
   );
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   logInButton: {
     alignSelf: 'flex-end',
     right: 20,
-    top: 40,
+    top: 60,
     color: 'blue',
     fontSize: 15,
     textDecorationLine: 'underline',
