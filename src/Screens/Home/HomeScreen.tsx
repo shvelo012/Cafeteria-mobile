@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
-
+import { styles } from './HomeScreen.styles';
 
 const HomeScreen: React.FC = () => {
   return (
@@ -18,17 +18,5 @@ const HomeScreen: React.FC = () => {
     </>
   );
 };
-
-// Define styles using StyleSheet
-const styles = StyleSheet.create({
-  logInButton: {
-    alignSelf: 'flex-end',
-    right: 20,
-    top: 60,
-    color: 'blue',
-    fontSize: 15,
-    textDecorationLine: 'underline',
-  }
-});
 
 export default HomeScreen;

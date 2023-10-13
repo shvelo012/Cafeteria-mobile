@@ -1,38 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
+import { ArrowLeft } from '../../icons';
+import Header from '../../components/header/Header';
+import { styles } from './HomeAdminScreen.styles';
+
 const HomeAdminScreen: React.FC = () => {
   return (
-    <>
-      <View style={styles.container}>
-        <TouchableHighlight onPress={() => navigate(Screens.LoginScreenName)}>
-          <>
-            <Text>
-              Back
-            </Text>
-          </>
-        </TouchableHighlight>
-
-      </View>
-    </>
+    <View style={styles.screenRoot}>
+      <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.LoginScreenName)} />
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 18,
-    marginTop: 10,
-  },
-});
 
 export default HomeAdminScreen;

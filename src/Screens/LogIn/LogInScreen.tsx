@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, ActivityIndicator } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { useQuery } from '@tanstack/react-query';
 import { styles } from './LoginScreen.styles';
+import { ArrowLeft } from '../../icons';
+import Header from '../../components/header/Header';
+import { Button } from '../../components/Button/Button';
 
 const getCredentialsAPI = 'http://192.168.0.113:4000/admin/getcredentials';
 
@@ -48,13 +51,8 @@ const LoginScreen: React.FC = () => {
           <ActivityIndicator />
         </View>
         :
-        <>
-          <TouchableHighlight style={styles.backButton} onPress={() => navigate(Screens.HomeScreenName)}>
-            <View>
-              <Text>back</Text>
-              <Text onPress={() => console.log(data)}>kkkk</Text>
-            </View>
-          </TouchableHighlight>
+        <View style={styles.screenRoot}>
+          <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.HomeScreenName)} />
           <View style={styles.container}>
 
             <Text style={styles.title}>Login</Text>
@@ -69,9 +67,12 @@ const LoginScreen: React.FC = () => {
               secureTextEntry
               onChangeText={(text) => setPassword(text)}
             />
-            <Button title="Login" onPress={handleLogin} />
+            <Button
+              text='Log In'
+              onPress={handleLogin}
+              disabled={!!error || isLoading} />
           </View>
-        </>
+        </View>
       }
     </>
   );
