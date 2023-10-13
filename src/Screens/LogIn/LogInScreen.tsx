@@ -7,8 +7,8 @@ import { styles } from './LoginScreen.styles';
 import { ArrowLeft } from '../../icons';
 import Header from '../../components/header/Header';
 import { Button } from '../../components/Button/Button';
-
-const getCredentialsAPI = 'http://192.168.0.113:4000/admin/getcredentials';
+import { DeviceApi } from '../../API/API';
+const getCredentialsAPI = `http://${DeviceApi}:4000/admin/getcredentials`;
 
 const fetchDataFunction = async () => {
   try {
@@ -23,9 +23,6 @@ const fetchDataFunction = async () => {
     throw error;
   }
 };
-
-
-
 
 const LoginScreen: React.FC = () => {
   const { data, error, isLoading } = useQuery({ queryKey: ['todos'], queryFn: fetchDataFunction })

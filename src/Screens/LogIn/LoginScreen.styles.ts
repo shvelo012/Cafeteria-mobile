@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     marginTop: themeSpacing(26),
   },
   title: {
-    fontSize: 24,
+    fontSize: scaled(24),
     fontWeight: 'bold',
     marginBottom: 20,
   },

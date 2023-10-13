@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { styles } from './HomeScreen.styles';
+import { DeviceApi } from '../../API/API';
 
 const HomeScreen: React.FC = () => {
   return (
