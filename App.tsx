@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import MainContainer from './src/MainContainer';
 import { QueryClientProvider } from '@tanstack/react-query';
-import getCredentialsQueryClient from './src/queries/credentialsQuery';
+import getData from './src/queries/getData';
 
 const App: React.FC = () => {
 
   return (
-    <QueryClientProvider client={getCredentialsQueryClient}>
+    <QueryClientProvider client={getData}>
       <MainContainer />
     </QueryClientProvider>
   );

@@ -25,8 +25,8 @@ const fetchDataFunction = async () => {
 };
 
 const LoginScreen: React.FC = () => {
-  const { data, error, isLoading } = useQuery({ queryKey: ['todos'], queryFn: fetchDataFunction })
-
+  const { data, error, isLoading } = useQuery({ queryKey: ['credentials'], queryFn: fetchDataFunction });
+  console.log(data);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
