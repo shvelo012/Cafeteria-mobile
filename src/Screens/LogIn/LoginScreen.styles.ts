@@ -4,7 +4,7 @@ import { scaled } from "../../components/scaler"
 
 export const styles = StyleSheet.create({
   screenRoot: {
-    marginVertical: themeSpacing(8),
+    marginVertical: themeSpacing(2),
   },
   loader: {
     flex: 1,
@@ -14,19 +14,20 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: themeSpacing(26),
+    marginTop: themeSpacing(4),
   },
   title: {
     fontSize: scaled(24),
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: themeSpacing(4),
   },
   input: {
     width: scaled(300),
     height: scaled(45),
     borderColor: 'gray',
-    borderWidth: scaled(3),
+    borderWidth: scaled(2),
     marginBottom: themeSpacing(4),
     paddingHorizontal: themeSpacing(2),
+    fontSize: scaled(12)
   },
 });

@@ -1,13 +1,9 @@
 import React, { FC } from 'react';
-import { Image, ImageProps, ImageStyle, StyleSheet } from 'react-native';
+import { Image, ImageProps, StyleSheet } from 'react-native';
 import { scaled } from '../components/scaler';
 
 export enum FoodEnum {
   "Pizza" = require('./../Images/Pizza.png'),
-  // VisitDoctor = require('./assets/VisitDoctor.png'),
-  // ConsultWithDoctor = require('./assets/ConsultWithDoctor.png'),
-  // ChangeYourLifeStyle = require('./assets/ChangeYourLifeStyle.png'),
-  // KeepDoingThis = require('./assets/KeepDoingThis.png'),
 }
 
 export interface FoodIllustrationProps extends Omit<ImageProps, 'source'> {

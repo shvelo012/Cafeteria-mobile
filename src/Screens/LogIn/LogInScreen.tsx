@@ -30,6 +30,8 @@ const LoginScreen: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+
   const handleLogin = () => {
     // console.log(username + " " + password);
     // console.log(username === data.username && password === data.password);
@@ -51,7 +53,6 @@ const LoginScreen: React.FC = () => {
         <View style={styles.screenRoot}>
           <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.HomeScreenName)} />
           <View style={styles.container}>
-
             <Text style={styles.title}>Login</Text>
             <TextInput
               style={styles.input}

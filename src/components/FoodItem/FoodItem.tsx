@@ -9,7 +9,6 @@ import { scaled } from '../scaler';
 
 const FoodItem: React.FC<FoodItemProps> = ({ info }) => {
   console.log(info);
-  // <FoodIllustration food={FoodEnum.Pizza}
   if (!info) {
     return;
   }

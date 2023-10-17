@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { styles } from './HomeScreen.styles';
@@ -34,19 +34,20 @@ const HomeScreen: React.FC = () => {
   return (
     <>
       {/* header */}
-      <View>
+      <TouchableHighlight style={{ zIndex: 1, position: 'relative', borderWidth: 2 }}>
         <Text style={styles.logInButton} onPress={() => navigate(Screens.LoginScreenName)}> Log In  </Text>
-      </View>
+      </TouchableHighlight>
       <ScrollView>
-        <View>
-          <View style={{
-            width: '100%',
-            justifyContent: 'flex-start',
-          }}>
-            {data && data.data.map((item: FoodItemType) => (
-              <FoodItem key={item.ID} info={item} />
-            ))}
-          </View>
+        <View style={{
+          marginTop: themeSpacing(12),
+          width: '100%',
+          justifyContent: 'flex-start',
+          borderWidth: 2,
+
+        }}>
+          {data && data.data.map((item: FoodItemType) => (
+            <FoodItem key={item.ID} info={item} />
+          ))}
         </View>
       </ScrollView>
     </>
