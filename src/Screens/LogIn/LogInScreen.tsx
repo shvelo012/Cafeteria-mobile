@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { useQuery } from '@tanstack/react-query';
@@ -58,27 +58,29 @@ const LoginScreen: React.FC = () => {
           <ActivityIndicator />
         </View>
         :
-        <View style={styles.screenRoot}>
-          <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.HomeScreenName)} />
-          <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Username"
-              onChangeText={(text) => setUsername(text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry
-              onChangeText={(text) => setPassword(text)}
-            />
-            <Button
-              text='Log In'
-              onPress={handleLogin}
-              disabled={!!error || isLoading} />
+        <KeyboardAvoidingView>
+          <View style={styles.screenRoot}>
+            <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.HomeScreenName)} />
+            <View style={styles.container}>
+              <Text style={styles.title}>Login</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Username"
+                onChangeText={(text) => setUsername(text)}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry
+                onChangeText={(text) => setPassword(text)}
+              />
+              <Button
+                text='Log In'
+                onPress={handleLogin}
+                disabled={!!error || isLoading} />
+            </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       }
     </>
   );
