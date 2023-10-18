@@ -30,7 +30,6 @@ const LoginScreen: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
 
   const handleLogin = () => {
     // console.log(username + " " + password);

@@ -14,19 +14,19 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: themeSpacing(4),
+    marginTop: themeSpacing(2),
   },
   title: {
     fontSize: scaled(24),
     fontWeight: 'bold',
-    marginBottom: themeSpacing(4),
+    marginBottom: themeSpacing(2),
   },
   input: {
     width: scaled(300),
     height: scaled(45),
     borderColor: 'gray',
     borderWidth: scaled(2),
-    marginBottom: themeSpacing(4),
+    marginBottom: themeSpacing(2),
     paddingHorizontal: themeSpacing(2),
     fontSize: scaled(12)
   },
