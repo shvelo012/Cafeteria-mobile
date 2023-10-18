@@ -7,7 +7,9 @@ import { styles } from './LoginScreen.styles';
 import { ArrowLeft } from '../../icons';
 import Header from '../../components/header/Header';
 import { Button } from '../../components/Button/Button';
+import * as Device from 'expo-device';
 import { DeviceApi } from '../../API/API';
+import { DeviceType } from 'expo-device';
 const getCredentialsAPI = `http://${DeviceApi}:4000/admin/getcredentials`;
 
 const fetchDataFunction = async () => {
@@ -23,10 +25,17 @@ const fetchDataFunction = async () => {
     throw error;
   }
 };
+const deviceType: Device.DeviceType | null = Device.deviceType;
+
+if (deviceType !== null) {
+  console.log(DeviceType[deviceType]);
+} else {
+  console.log("Device type is null");
+}
+
 
 const LoginScreen: React.FC = () => {
   const { data, error, isLoading } = useQuery({ queryKey: ['credentials'], queryFn: fetchDataFunction });
-  console.log(data);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 

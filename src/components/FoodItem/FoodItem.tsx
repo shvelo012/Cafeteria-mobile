@@ -8,7 +8,6 @@ import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustration
 import { scaled } from '../scaler';
 
 const FoodItem: React.FC<FoodItemProps> = ({ info }) => {
-  console.log(info);
   if (!info) {
     return;
   }
