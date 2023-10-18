@@ -7,6 +7,7 @@ export const deviceType = Device.deviceType;
 
 export const styles = StyleSheet.create(
   (deviceType === DeviceType.PHONE ?
+    //მობილურის სტილები
     {
       logInButton: {
         alignSelf: 'flex-end',
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create(
       }
     }
     :
+    //პლანშეტის სტილები
     {
       logInButton: {
         alignSelf: 'flex-end',
