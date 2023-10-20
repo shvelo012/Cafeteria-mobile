@@ -17,10 +17,12 @@ export class FoodStore {
   }
 
   changeQuantity(quantity: number, id: number) {
-    this._foodItem = this._foodItem.map(item =>
-      item.ID === id ? { ...item, quantity } : item
-    );
+    const itemIndex = this._foodItem.findIndex(item => item.ID === id);
+    if (itemIndex !== -1) {
+      this._foodItem[itemIndex].Quantity = quantity;
+    }
   }
+  
 
   reset() {
     this._foodItem = [];
