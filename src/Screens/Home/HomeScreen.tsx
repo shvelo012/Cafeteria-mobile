@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, ScrollView, TouchableHighlight } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
@@ -10,7 +10,8 @@ import { FoodItemType } from '../../types.ts/FoodItemType';
 import * as Device from 'expo-device';
 import { DeviceType } from 'expo-device';
 import { themeSpacing } from '../../components/spacer';
-
+import { observer } from 'mobx-react';
+import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 const getFoodAPI = `http://${DeviceApi}:4000/food/all`;
 
 
@@ -37,7 +38,10 @@ const fetchDataFunction = async () => {
   }
 };
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC = observer(() => {
+  const foodStore = useFoodStore();
+  useEffect(() => foodStore.reset(), []);
+
   const { data, error, isLoading } = useQuery({ queryKey: ['food'], queryFn: fetchDataFunction });
 
   if (!data) {
@@ -65,6 +69,6 @@ const HomeScreen: React.FC = () => {
       </ScrollView>
     </>
   );
-};
+});
 
 export default HomeScreen;

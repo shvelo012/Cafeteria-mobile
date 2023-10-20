@@ -5,6 +5,10 @@ import { SvgProps } from 'react-native-svg';
 import { scaled } from '../components/scaler';
 
 import ArrowLeftIcon from './ArrowLeft.svg';
+import MinusIcon from './Minus.svg';
+import PlusIcon from './Plus.svg';
 
 export const ArrowLeft: FC<SvgProps> = (props) => <ArrowLeftIcon width={scaled(28)} height={scaled(28)} {...props} />;
+export const Minus: FC<SvgProps> = (props) => <MinusIcon width={scaled(12)} height={scaled(12)} {...props} />;
+export const Plus: FC<SvgProps> = (props) => <PlusIcon width={scaled(12)} height={scaled(12)} {...props} />;
 

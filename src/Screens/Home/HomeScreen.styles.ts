@@ -19,7 +19,7 @@ export const styles = StyleSheet.create(
       }
     }
     :
-    //პლანშეტის სტილები
+    //პლანშეტის სტილები --------------------
     {
       logInButton: {
         alignSelf: 'flex-end',
