@@ -1,3 +1,4 @@
+
 import React, {FC} from 'react';
 import {Image, ImageProps, StyleSheet} from 'react-native';
 import {scaled} from '../components/scaler';
@@ -19,6 +20,7 @@ export const FoodIllustration: FC<FoodIllustrationProps> = ({food, ...rest}) => 
 };
 
 const styles = StyleSheet.create(
+
     (deviceType === DeviceType.PHONE ?
             {
                 size: {

@@ -8,6 +8,7 @@ import {colors} from "../colors";
 export const deviceType = Device.deviceType;
 
 export const styles = StyleSheet.create(
+
     (deviceType === DeviceType.PHONE ?
             {//მობილურის სტილები
                 foodContainer:{
