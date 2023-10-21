@@ -34,6 +34,7 @@ const baseColors = {
   darkBronze: '#7c5600',
   satinSheenGold: '#d1a33b',
 
+  appBackground: '#F3F3F3',
   sonicSilver: '#757575',
   azureRadiance: '#1877f2',
 
