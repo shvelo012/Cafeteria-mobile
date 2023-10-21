@@ -58,9 +58,12 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         <Text style={styles.text}>{quantity}</Text>
 
         <Row style={styles.plusMinusSaveRow}>
-          <TouchableOpacity onPress={() => setQuantity(prevQuantity => prevQuantity! - 1)}>
+          <TouchableOpacity
+            style={styles.touchableMinus}
+            onPress={() => setQuantity(prevQuantity => prevQuantity! - 1)}>
             <Minus />
           </TouchableOpacity>
+
           <Button
             text='Save'
             onPress={() => handleSave()}
@@ -68,9 +71,12 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
             color='red'
             loading={UpdateQuantityMutation.isLoading}
             inline
-            style={{ alignSelf: 'center' }}
+            style={styles.button}
           />
-          <TouchableOpacity onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
+
+          <TouchableOpacity
+            style={styles.touchablePlus}
+            onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
             <Plus />
           </TouchableOpacity>
         </Row>
