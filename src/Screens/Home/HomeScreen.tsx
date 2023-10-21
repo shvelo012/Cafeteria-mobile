@@ -32,7 +32,7 @@ const HomeScreen: React.FC = observer(() => {
 
   const { data, error, isLoading } = useQuery({ queryKey: ['food'], queryFn: fetchDataFunction });
 
-  if (!data) {
+  if (!data || isLoading || error) {
     return (
       <View>
         <Text>Loading...</Text>
