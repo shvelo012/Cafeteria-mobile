@@ -43,13 +43,7 @@ const HomeAdminScreen: React.FC = observer(() => {
       <View style={styles.screenRoot}>
         <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.LoginScreenName)} />
         <ScrollView>
-          <View style={{
-            marginTop: themeSpacing(12),
-            width: '100%',
-            justifyContent: 'flex-start',
-            borderWidth: 2,
-
-          }}>
+          <View style={styles.foodViewWrapper}>
             {foodItems && foodItems.map((item: FoodItemType) => (
               <FoodItemAdmin key={item.ID} info={item} />
             ))}

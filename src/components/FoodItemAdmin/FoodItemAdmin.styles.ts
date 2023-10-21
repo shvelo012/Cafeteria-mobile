@@ -26,9 +26,14 @@ export const styles = StyleSheet.create(
       titleWrapper: {
         borderBottomWidth: scaled(1)
       },
-      plusAndMinus: {
+      title: {
+        fontSize: scaled(22),
+        alignSelf: 'center',
+      },
+      plusMinusSaveRow: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignContent: 'center',
       },
       buttonWrapper: {
         justifyContent: 'center',
@@ -36,10 +41,6 @@ export const styles = StyleSheet.create(
         borderTopWidth: scaled(1),
         alignItems: 'center',
         height: scaled(40)
-      },
-      title: {
-        fontSize: scaled(22),
-        alignSelf: 'center',
       },
       wrapper: {
         borderWidth: 2,

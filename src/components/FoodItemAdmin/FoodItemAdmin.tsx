@@ -18,6 +18,7 @@ const getCredentialsAPI = `http://${DeviceApi}:4000/food/changeQuantity`;
 const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
   const [quantity, setQuantity] = useState<number>();
+  const [showFullText, setShowFullText] = useState(false);
   const { foodItems, changeQuantity } = useFoodStore();
 
   const UpdateQuantityMutation = useMutation({
@@ -37,33 +38,29 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
     changeQuantity(quantity!, info.ID);
   }
 
-
-  console.log(quantity, info.Quantity)
-
-
   return (
 
-    <Spacer m={themeSpacing(1)} style={styles.wrapper}>
+    <Spacer my={themeSpacing(0.1)} mx={0.5} style={styles.wrapper}>
       <View style={styles.titleWrapper}>
-        <Text style={styles.title}>{info.Name}</Text>
+        <TouchableOpacity
+          onPress={() => setShowFullText(!showFullText)}
+        >
+          <Text numberOfLines={showFullText ? 0 : 1} ellipsizeMode="tail" style={styles.title}>
+            {info.Name}
+          </Text>
+        </TouchableOpacity>
       </View>
-      {info.Name && <FoodIllustration food={FoodEnum[info.Name as keyof typeof FoodEnum]} />}
+
+      <FoodIllustration food={FoodEnum[info.Name as keyof typeof FoodEnum]} />
+
       <View style={styles.titleWrapper}>
         <Text style={styles.text}>ფასი: {info.Price}</Text>
+        <Text style={styles.text}>{quantity}</Text>
 
-        <Row style={styles.plusAndMinus}>
+        <Row style={styles.plusMinusSaveRow}>
           <TouchableOpacity onPress={() => setQuantity(prevQuantity => prevQuantity! - 1)}>
             <Minus />
           </TouchableOpacity>
-
-          <Text style={styles.text}>{quantity}</Text>
-
-          <TouchableOpacity onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
-            <Plus />
-          </TouchableOpacity>
-        </Row>
-
-        <View style={styles.buttonWrapper}>
           <Button
             text='Save'
             onPress={() => handleSave()}
@@ -71,8 +68,12 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
             color='red'
             loading={UpdateQuantityMutation.isLoading}
             inline
-            style={{ alignSelf: 'center' }} />
-        </View>
+            style={{ alignSelf: 'center' }}
+          />
+          <TouchableOpacity onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
+            <Plus />
+          </TouchableOpacity>
+        </Row>
 
       </View>
     </Spacer >

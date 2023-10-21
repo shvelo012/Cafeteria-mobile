@@ -17,6 +17,12 @@ export const styles = StyleSheet.create(
     {
       screenRoot: {
         marginVertical: themeSpacing(2),
-      }
+      },
+      foodViewWrapper: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+      },
     }
   ));

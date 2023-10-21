@@ -3,7 +3,7 @@ import { Image, ImageProps, StyleSheet } from 'react-native';
 import { scaled } from '../components/scaler';
 
 export enum FoodEnum {
-  "Pizza" = require('./../Images/Pizza.png'),
+  "პიცა" = require('./../Images/Pizza.png'),
 }
 
 export interface FoodIllustrationProps extends Omit<ImageProps, 'source'> {
