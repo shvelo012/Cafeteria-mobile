@@ -6,7 +6,8 @@ export const deviceType = Device.deviceType;
 
 export const styles = StyleSheet.create(
   (deviceType === DeviceType.PHONE ?
-    {//მობილურის სტილები
+    {
+      //მობილურის სტილები
       title: {
         fontSize: scaled(22),
         alignSelf: 'center',

@@ -1,6 +1,9 @@
 import React, { FC } from 'react';
 import { Image, ImageProps, StyleSheet } from 'react-native';
 import { scaled } from '../components/scaler';
+import * as Device from 'expo-device';
+import { DeviceType } from 'expo-device';
+export const deviceType = Device.deviceType;
 
 export enum FoodEnum {
   "პიცა" = require('./../Images/Pizza.png'),
@@ -14,9 +17,19 @@ export const FoodIllustration: FC<FoodIllustrationProps> = ({ food, ...rest }) =
   return <Image source={food} style={styles.size} {...rest} />;
 };
 
-const styles = StyleSheet.create({
-  size: {
-    height: scaled(60),
-    width: scaled(120)
-  },
-});
+const styles = StyleSheet.create(
+  (deviceType === DeviceType.PHONE ?
+    {
+      size: {
+        height: scaled(60),
+        width: scaled(120)
+      },
+    }
+    :
+    {
+      size: {
+        height: scaled(60),
+        width: scaled(120)
+      },
+    }
+  ));
