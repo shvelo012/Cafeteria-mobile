@@ -14,16 +14,6 @@ import { observer } from 'mobx-react';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 const getFoodAPI = `http://${DeviceApi}:4000/food/all`;
 
-
-
-const deviceType: Device.DeviceType | null = Device.deviceType;
-
-if (deviceType !== null) {
-  console.log(DeviceType[deviceType]);
-} else {
-  console.log("Device type is null");
-}
-
 const fetchDataFunction = async () => {
   try {
     const response = await fetch(getFoodAPI);
