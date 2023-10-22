@@ -3,6 +3,7 @@ import { scaled } from "../scaler";
 import * as Device from 'expo-device';
 import { DeviceType } from "expo-device";
 import { themeSpacing } from "../spacer";
+import { theme } from "@storybook/react-native";
 export const deviceType = Device.deviceType;
 
 export const styles = StyleSheet.create(
@@ -48,7 +49,6 @@ export const styles = StyleSheet.create(
       buttonWrapper: {
         justifyContent: 'center',
         alignContent: 'center',
-        borderTopWidth: scaled(1),
         alignItems: 'center',
         height: scaled(40)
       },

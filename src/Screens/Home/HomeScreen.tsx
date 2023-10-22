@@ -3,38 +3,25 @@ import { View, Text, ScrollView, TouchableHighlight, ActivityIndicator } from 'r
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { styles } from './HomeScreen.styles';
-import { DeviceApi } from '../../API/API';
-import { useQuery } from '@tanstack/react-query';
 import FoodItem from '../../components/FoodItem/FoodItem';
 import { FoodItemType } from '../../types.ts/FoodItemType';
 import { themeSpacing } from '../../components/spacer';
 import { observer } from 'mobx-react';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { colors } from "../../components/colors";
-import {scaled} from "../../components/scaler";
-
-const getFoodAPI = `http://${DeviceApi}:4000/food/all`;
-
-const fetchDataFunction = async () => {
-    try {
-        const response = await fetch(getFoodAPI);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        throw error;
-    }
-};
+import { scaled } from "../../components/scaler";
+import { useFoodData } from './Queries/FoodQuery';
+import { useIsOpenData } from './Queries/IsOpenQuery';
 
 const HomeScreen: React.FC = observer(() => {
     const foodStore = useFoodStore();
     useEffect(() => foodStore.reset(), []);
 
-    const { data, error, isLoading } = useQuery({ queryKey: ['food'], queryFn: fetchDataFunction });
+    const { foodData, foodError, foodLoading } = useFoodData();
+    const { isOpenData } = useIsOpenData();
 
-    if (!data || isLoading || error) {
+
+    if (!foodData || foodError || foodLoading || isOpenData === undefined) {
         return (
             <View>
                 <Text>Loading...</Text>
@@ -43,22 +30,21 @@ const HomeScreen: React.FC = observer(() => {
         );
     }
 
-
     const groupedItems: FoodItemType[][] = [];
-    for (let i = 0; i < data.data.length; i += 2) {
-        groupedItems.push([data.data[i], data.data[i + 1]]);
+    for (let i = 0; i < foodData.data.length; i += 2) {
+        groupedItems.push([foodData.data[i], foodData.data[i + 1]]);
     }
 
     return (
         <>
-
-            <View style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 1
-            }}>
+            <View
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 1
+                }}>
                 <TouchableHighlight>
                     <Text style={styles.logInButton} onPress={() => navigate(Screens.LoginScreenName)}>
                         Log In
@@ -66,32 +52,35 @@ const HomeScreen: React.FC = observer(() => {
                 </TouchableHighlight>
             </View>
 
-
-            <ScrollView style={{paddingTop: scaled(30)}}>
-                <View
-                    style={{
-                        marginTop: themeSpacing(12),
-                        width: '100%',
-                        justifyContent: 'flex-start',
-                        backgroundColor: colors.appBackground
-                    }}
-                >
-                    {groupedItems.map((itemPair: FoodItemType[], index: number) => (
-                        <View
-                            key={index}
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                marginBottom: themeSpacing(4),
-                            }}
-                        >
-                            {itemPair.map((item: FoodItemType) => (
-                                <FoodItem key={item.ID} info={item} />
-                            ))}
-                        </View>
-                    ))}
-                </View>
-            </ScrollView>
+            {isOpenData.data === 0 ? (
+                <Text>Cafeteria is closed</Text>
+            ) : (
+                <ScrollView style={{ paddingTop: scaled(30) }}>
+                    <View
+                        style={{
+                            marginTop: themeSpacing(12),
+                            width: '100%',
+                            justifyContent: 'flex-start',
+                            backgroundColor: colors.appBackground
+                        }}
+                    >
+                        {groupedItems.map((itemPair: FoodItemType[], index: number) => (
+                            <View
+                                key={index}
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    marginBottom: themeSpacing(4),
+                                }}
+                            >
+                                {itemPair.map((item: FoodItemType) => (
+                                    <FoodItem key={item.ID} info={item} />
+                                ))}
+                            </View>
+                        ))}
+                    </View>
+                </ScrollView>
+            )}
         </>
     );
 });
