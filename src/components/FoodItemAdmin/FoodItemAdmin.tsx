@@ -51,7 +51,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         </TouchableOpacity>
       </View>
 
-      <FoodIllustration food={FoodEnum[info.Name as keyof typeof FoodEnum]} />
+      <FoodIllustration style={styles.ilustrationSize} food={FoodEnum[info.Name as keyof typeof FoodEnum]} />
 
       <View style={styles.titleWrapper}>
         <Text style={styles.text}>ფასი: {info.Price}</Text>

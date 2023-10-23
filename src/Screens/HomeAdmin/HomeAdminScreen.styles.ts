@@ -11,7 +11,39 @@ export const styles = StyleSheet.create(
     {
       screenRoot: {
         marginVertical: themeSpacing(8),
-      }
+      },
+      foodViewWrapper: {
+        marginTop: themeSpacing(6),
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+      },
+      headerMargin: {
+        marginTop: themeSpacing(10),
+      },
+      closeButtonContainer: {
+        padding: scaled(2),
+        position: 'absolute',
+        top: 0,
+        right: scaled(18),
+        zIndex: 1,
+      },
+      closeTemporaryButtonContainer: {
+        padding: scaled(2),
+        position: 'absolute',
+        top: 0,
+        left: scaled(18),
+        zIndex: 1,
+      },
+      closeButton: {
+        backgroundColor: 'red',
+        padding: themeSpacing(1),
+        borderRadius: scaled(4),
+      },
+      closeButtonText: {
+        color: 'white',
+      },
     }
     :
     //პლანშეტის სტილები -----------
