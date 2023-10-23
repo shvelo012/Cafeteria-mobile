@@ -9,25 +9,11 @@ import Header from '../../components/header/Header';
 import { Button } from '../../components/Button/Button';
 import { DeviceApi } from '../../API/API';
 import axios from 'axios';
-const getCredentialsAPI = `http://${DeviceApi}:4000/admin/getcredentials`;
+import { useCredentialsQuery } from './Queries/getCredentialsQuery';
 const openStoreAPI = `http://${DeviceApi}:4000/admin/setIsOpen`;
 
-const fetchDataFunction = async () => {
-  try {
-    const response = await fetch(getCredentialsAPI);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    return data;
-
-  } catch (error) {
-    throw error;
-  }
-};
-
 const LoginScreen: React.FC = () => {
-  const { data, error, isLoading } = useQuery({ queryKey: ['credentials'], queryFn: fetchDataFunction });
+  const { credentialsData, credentialsError, credentialsIsLoading } = useCredentialsQuery();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -47,7 +33,7 @@ const LoginScreen: React.FC = () => {
 
   return (
     <>
-      {isLoading ?
+      {credentialsIsLoading ?
         <View style={styles.loader}>
           <Text>Loading...</Text>
           <ActivityIndicator />
@@ -72,7 +58,7 @@ const LoginScreen: React.FC = () => {
               <Button
                 text='Log In'
                 onPress={() => handleLogin()}
-                disabled={!!error || isLoading || openCafeteriaMutation.isLoading} />
+                disabled={!!credentialsError || credentialsIsLoading || openCafeteriaMutation.isLoading} />
             </View>
           </View>
         </KeyboardAvoidingView>
