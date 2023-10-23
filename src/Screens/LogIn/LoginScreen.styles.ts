@@ -11,7 +11,7 @@ export const styles = StyleSheet.create(
     // მობილურის სტილები
     {
       screenRoot: {
-        marginVertical: themeSpacing(6),
+        marginVertical: themeSpacing(10),
       },
       loader: {
         flex: 1,
@@ -29,8 +29,8 @@ export const styles = StyleSheet.create(
         marginBottom: themeSpacing(2),
       },
       input: {
-        width: scaled(300),
-        height: scaled(45),
+        width: scaled(320),
+        height: scaled(50),
         borderColor: 'gray',
         borderWidth: scaled(3),
         marginBottom: themeSpacing(2),

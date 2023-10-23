@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
@@ -15,13 +15,22 @@ import { useIsOpenData } from './Queries/IsOpenQuery';
 
 const HomeScreen: React.FC = observer(() => {
     const foodStore = useFoodStore();
-    useEffect(() => foodStore.reset(), []);
+    useEffect(() => {
+        foodStore.reset();
+    }, [foodStore]);
 
-    const { foodData, foodError, foodLoading } = useFoodData();
+    const { foodData, foodLoading } = useFoodData();
     const { isOpenData } = useIsOpenData();
 
+    const [foodItems, setFoodItems] = useState<FoodItemType[]>([]);
 
-    if (!foodData || foodError || foodLoading || isOpenData === undefined) {
+    useEffect(() => {
+        if (foodData && foodData.data) {
+            setFoodItems(foodData.data);
+        }
+    }, [foodData]);
+
+    if (!foodData || !isOpenData || foodLoading) {
         return (
             <View>
                 <Text>Loading...</Text>
@@ -29,10 +38,10 @@ const HomeScreen: React.FC = observer(() => {
             </View>
         );
     }
-    console.log(isOpenData);
+
     const groupedItems: FoodItemType[][] = [];
-    for (let i = 0; i < foodData.data.length; i += 2) {
-        groupedItems.push([foodData.data[i], foodData.data[i + 1]]);
+    for (let i = 0; i < foodItems.length; i += 2) {
+        groupedItems.push([foodItems[i], foodItems[i + 1]]);
     }
 
     return (
@@ -84,5 +93,6 @@ const HomeScreen: React.FC = observer(() => {
         </>
     );
 });
+
 
 export default HomeScreen;
