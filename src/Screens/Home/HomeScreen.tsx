@@ -29,7 +29,7 @@ const HomeScreen: React.FC = observer(() => {
             </View>
         );
     }
-
+    console.log(isOpenData);
     const groupedItems: FoodItemType[][] = [];
     for (let i = 0; i < foodData.data.length; i += 2) {
         groupedItems.push([foodData.data[i], foodData.data[i + 1]]);
@@ -52,7 +52,7 @@ const HomeScreen: React.FC = observer(() => {
                 </TouchableHighlight>
             </View>
 
-            {isOpenData.data === 0 ? (
+            {isOpenData.IsOpen === 0 ? (
                 <Text>Cafeteria is closed</Text>
             ) : (
                 <ScrollView style={{ paddingTop: scaled(30) }}>

@@ -32,7 +32,7 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const openCafeteriaMutation = useMutation({
-    mutationFn: (setIsOpen: { isOpen: number }) => {
+    mutationFn: (setIsOpen: { IsOpen: number }) => {
       return axios.post(openStoreAPI, setIsOpen)
     },
   });
@@ -40,7 +40,7 @@ const LoginScreen: React.FC = () => {
   const handleLogin = () => {
     // if (username === data.username && password === data.password) {
     navigate(Screens.HomeAdminScreenName);
-    openCafeteriaMutation.mutate({ isOpen: 1 });
+    openCafeteriaMutation.mutate({ IsOpen: 1 });
     // }
     // return;
   };
