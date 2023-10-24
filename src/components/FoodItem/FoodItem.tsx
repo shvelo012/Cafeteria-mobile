@@ -6,8 +6,6 @@ import { styles } from './FoodItem.styles';
 import { Spacer } from '../Spacer';
 import { themeSpacing } from '../spacer';
 import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustrations';
-import { scaled } from '../scaler';
-import {colors} from "../colors";
 
 const FoodItem: React.FC<FoodItemProps> = ({ info }) => {
   if (!info) {
