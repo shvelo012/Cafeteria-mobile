@@ -57,8 +57,8 @@ const HomeAdminScreen: React.FC = observer(() => {
   }
 
   const handleClose = () => {
-    closeCafeteriaMutation.mutate({ IsOpen: 0 });
-    resetQuantityMutation.mutate();
+    closeCafeteriaMutation.mutateAsync({ IsOpen: 0 });
+    resetQuantityMutation.mutateAsync();
     reset();
     navigate(Screens.LoginScreenName);
   };

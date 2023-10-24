@@ -22,7 +22,7 @@ export class FoodStore {
       this._foodItem[itemIndex].Quantity = quantity;
     }
   }
-  
+
 
   reset() {
     this._foodItem = [];
