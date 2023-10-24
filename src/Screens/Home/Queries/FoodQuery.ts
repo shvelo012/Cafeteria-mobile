@@ -17,7 +17,7 @@ const fetchDataFunction = async () => {
 };
 
 export const useFoodData = () => {
-  const { data: foodData, error: foodError, isLoading: foodLoading } = useQuery({
+  const { data: foodData, error: foodError, isLoading: foodLoading, refetch: foodRefetch } = useQuery({
     queryKey: ['food'],
     queryFn: fetchDataFunction,
   });
@@ -26,5 +26,6 @@ export const useFoodData = () => {
     foodData,
     foodError,
     foodLoading,
+    foodRefetch
   };
 };

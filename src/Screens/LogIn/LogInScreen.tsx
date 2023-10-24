@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { styles } from './LoginScreen.styles';
 import { ArrowLeft } from '../../icons';
 import Header from '../../components/header/Header';

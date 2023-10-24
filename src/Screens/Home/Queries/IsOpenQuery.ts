@@ -17,7 +17,7 @@ export const fetchIsOpenData = async () => {
 };
 
 export const useIsOpenData = () => {
-  const { data: isOpenData, error: isOpenError, isLoading: isOpenLoading } = useQuery({
+  const { data: isOpenData, error: isOpenError, isLoading: isOpenLoading, refetch: isOpenRefetch } = useQuery({
     queryKey: ['IsOpen'],
     queryFn: fetchIsOpenData,
   });
@@ -26,5 +26,6 @@ export const useIsOpenData = () => {
     isOpenData,
     isOpenError,
     isOpenLoading,
+    isOpenRefetch
   };
 };

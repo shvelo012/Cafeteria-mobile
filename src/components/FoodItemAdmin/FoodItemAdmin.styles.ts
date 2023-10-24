@@ -85,7 +85,11 @@ export const styles = StyleSheet.create(
       text: {
         alignSelf: 'center',
         fontSize: scaled(10),
-      }
+      },
+      ilustrationSize: {
+        height: scaled(60),
+        width: scaled(120)
+      },
 
     }
   )

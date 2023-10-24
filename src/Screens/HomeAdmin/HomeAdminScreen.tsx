@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ActivityIndicator, ScrollView, View, Text, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, ScrollView, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { ArrowLeft } from '../../icons';
@@ -14,11 +14,14 @@ import { observer } from 'mobx-react';
 import axios from 'axios';
 import { Row } from '../../components/row/Row';
 import { useFoodData } from '../Home/Queries/FoodQuery';
-const closeStoreAPI = `http://${DeviceApi}:4000/admin/setIsOpen`;
+import { Spacer } from '../../components/Spacer';
+const IsStoreOpenAPI = `http://${DeviceApi}:4000/admin/setIsOpen`;
+const resetQuantityAPI = `http://${DeviceApi}:4000/food/resetQuantity`;
 
 
 const HomeAdminScreen: React.FC = observer(() => {
-  const { addFoodItems, foodItems } = useFoodStore();
+  const [isCafeteriaOpen, setIsCafeteriaOpen] = useState<boolean>(true);
+  const { addFoodItems, foodItems, reset } = useFoodStore();
   const foodQuery = useFoodData();
   const { foodData } = foodQuery;
   useEffect(() => {
@@ -27,13 +30,58 @@ const HomeAdminScreen: React.FC = observer(() => {
 
   const closeCafeteriaMutation = useMutation({
     mutationFn: (setIsOpen: { IsOpen: number }) => {
-      return axios.post(closeStoreAPI, setIsOpen);
+      return axios.post(IsStoreOpenAPI, setIsOpen);
     },
   });
 
-  // const resetQuantityMutation = useMutation({
-  //   mutationFn: 
-  // })
+  const openCafeteriaMutation = useMutation({
+    mutationFn: (setIsOpen: { IsOpen: number }) => {
+      return axios.post(IsStoreOpenAPI, setIsOpen);
+    },
+  });
+
+  const resetQuantityMutation = useMutation({
+    mutationFn: () => {
+      return axios.post(resetQuantityAPI);
+    },
+  });
+
+  const handleTemporaryClose = () => {
+    closeCafeteriaMutation.mutate({ IsOpen: 0 });
+    setIsCafeteriaOpen(false);
+  };
+
+  const handleOpen = () => {
+    openCafeteriaMutation.mutate({ IsOpen: 1 });
+    setIsCafeteriaOpen(true);
+  }
+
+  const handleClose = () => {
+    closeCafeteriaMutation.mutate({ IsOpen: 0 });
+    resetQuantityMutation.mutate();
+    reset();
+    navigate(Screens.LoginScreenName);
+  };
+
+  const handleQuitButtonPress = () => {
+    Alert.alert(
+      'Confirmation',
+      'გსურთ დახუროთ მაღაზია და გახვიდეტ?',
+      [
+        {
+          text: 'არა',
+          style: 'cancel',
+        },
+        {
+          text: 'დიახ',
+          onPress: () => {
+            handleClose()
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
 
   if (!foodItems || foodQuery.foodError || foodQuery.foodLoading) {
@@ -54,21 +102,30 @@ const HomeAdminScreen: React.FC = observer(() => {
         <ScrollView>
           <Row>
             <View style={styles.closeButtonContainer}>
-              <TouchableOpacity style={styles.closeButton} onPress={() => closeCafeteriaMutation.mutate({ IsOpen: 0 })}>
+              <TouchableOpacity style={styles.closeButton} onPress={handleQuitButtonPress}>
                 <Text style={styles.closeButtonText}>დაკეტვა</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.closeTemporaryButtonContainer}>
-              <TouchableOpacity style={styles.closeButton} onPress={() => closeCafeteriaMutation.mutate({ IsOpen: 0 })}>
-                <Text style={styles.closeButtonText}>დროებით დაკეტვა</Text>
-              </TouchableOpacity>
-            </View>
+            {isCafeteriaOpen ?
+              <View style={styles.closeTemporaryButtonContainer}>
+                <TouchableOpacity style={styles.closeButton} onPress={() => handleTemporaryClose()}>
+                  <Text style={styles.closeButtonText}>დროებით დაკეტვა</Text>
+                </TouchableOpacity>
+              </View>
+              :
+              <View style={styles.closeTemporaryButtonContainer}>
+                <TouchableOpacity style={styles.closeButton} onPress={() => handleOpen()}>
+                  <Text style={styles.closeButtonText}>გაღება</Text>
+                </TouchableOpacity>
+              </View>
+            }
           </Row>
           <View style={styles.foodViewWrapper}>
             {foodItems && foodItems.map((item: FoodItemType) => (
               <FoodItemAdmin key={item.ID} info={item} />
             ))}
           </View>
+          <Spacer p={5} />
         </ScrollView>
       </View>
 

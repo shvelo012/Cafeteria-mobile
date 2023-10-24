@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, TouchableHighlight, ActivityIndicator, RefreshControl } from 'react-native';
 import { navigate } from '../../Navigation/utils';
 import { Screens } from '../screenConstants';
 import { styles } from './HomeScreen.styles';
@@ -19,16 +19,23 @@ const HomeScreen: React.FC = observer(() => {
         foodStore.reset();
     }, [foodStore]);
 
-    const { foodData, foodLoading } = useFoodData();
-    const { isOpenData } = useIsOpenData();
+    const { foodData, foodLoading, foodRefetch } = useFoodData();
+    const { isOpenData, isOpenRefetch } = useIsOpenData();
 
     const [foodItems, setFoodItems] = useState<FoodItemType[]>([]);
+    const [refreshing, setRefreshing] = useState<boolean>(false);
 
     useEffect(() => {
         if (foodData && foodData.data) {
             setFoodItems(foodData.data);
         }
     }, [foodData]);
+
+    const onRefresh = () => {
+        foodRefetch();
+        isOpenRefetch();
+        setRefreshing(false);
+    };
 
     if (!foodData || !isOpenData || foodLoading) {
         return (
@@ -61,10 +68,22 @@ const HomeScreen: React.FC = observer(() => {
                 </TouchableHighlight>
             </View>
 
-            {isOpenData.IsOpen === 0 ? (
-                <Text>Cafeteria is closed</Text>
-            ) : (
-                <ScrollView style={{ paddingTop: scaled(30) }}>
+            <ScrollView style={{ paddingTop: scaled(30) }}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+            >
+                {isOpenData.IsOpen === 0 ? (
+                    <View style={styles.closedTextWrapper}>
+                        <Text style={styles.closedText}>
+                            კაფეტერია დაკეტილია
+                        </Text>
+                    </View>
+
+                ) : (
                     <View
                         style={{
                             marginTop: themeSpacing(12),
@@ -88,8 +107,9 @@ const HomeScreen: React.FC = observer(() => {
                             </View>
                         ))}
                     </View>
-                </ScrollView>
-            )}
+                )}
+            </ScrollView>
+
         </>
     );
 });

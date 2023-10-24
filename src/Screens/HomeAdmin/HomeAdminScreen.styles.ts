@@ -66,7 +66,14 @@ export const styles = StyleSheet.create(
         padding: scaled(2),
         position: 'absolute',
         top: 0,
-        right: scaled(4),
+        right: themeSpacing(1.5),
+        zIndex: 1,
+      },
+      closeTemporaryButtonContainer: {
+        padding: scaled(2),
+        position: 'absolute',
+        top: 0,
+        left: themeSpacing(1.5),
         zIndex: 1,
       },
       closeButton: {
