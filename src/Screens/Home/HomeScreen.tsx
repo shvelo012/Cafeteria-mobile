@@ -5,10 +5,8 @@ import { Screens } from '../screenConstants';
 import { styles } from './HomeScreen.styles';
 import FoodItem from '../../components/FoodItem/FoodItem';
 import { FoodItemType } from '../../types.ts/FoodItemType';
-import { themeSpacing } from '../../components/spacer';
 import { observer } from 'mobx-react';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
-import { colors } from "../../components/colors";
 import { scaled } from "../../components/scaler";
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
@@ -54,13 +52,7 @@ const HomeScreen: React.FC = observer(() => {
     return (
         <>
             <View
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    zIndex: 1
-                }}>
+                style={styles.root}>
                 <TouchableHighlight>
                     <Text style={styles.logInButton} onPress={() => navigate(Screens.LoginScreenName)}>
                         Log In
@@ -85,21 +77,12 @@ const HomeScreen: React.FC = observer(() => {
 
                 ) : (
                     <View
-                        style={{
-                            marginTop: themeSpacing(12),
-                            width: '100%',
-                            justifyContent: 'flex-start',
-                            backgroundColor: colors.appBackground
-                        }}
+                        style={styles.foodWrapper}
                     >
                         {groupedItems.map((itemPair: FoodItemType[], index: number) => (
                             <View
                                 key={index}
-                                style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    marginBottom: themeSpacing(4),
-                                }}
+                                style={styles.itemWrapper}
                             >
                                 {itemPair.map((item: FoodItemType) => (
                                     <FoodItem key={item.ID} info={item} />

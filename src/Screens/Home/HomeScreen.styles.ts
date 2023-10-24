@@ -29,7 +29,26 @@ export const styles = StyleSheet.create(
                 fontSize: scaled(20),
                 fontWeight: 'bold',
                 color: 'red'
-            }
+            },
+            root: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 1
+            },
+            foodWrapper: {
+                marginTop: themeSpacing(12),
+                width: '100%',
+                justifyContent: 'flex-start',
+                backgroundColor: colors.appBackground
+            },
+            itemWrapper: {
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginBottom: themeSpacing(4),
+            },
+
 
         }
         :
@@ -39,9 +58,9 @@ export const styles = StyleSheet.create(
                 alignSelf: 'flex-end',
                 right: themeSpacing(6),
                 top: themeSpacing(10),
-                color: 'blue',
-                fontSize: scaled(15),
-                textDecorationLine: 'underline',
+                color: colors.red,
+                fontSize: scaled(20),
+                fontWeight: 'bold'
             },
             closedTextWrapper: {
                 flex: 1,
@@ -53,7 +72,25 @@ export const styles = StyleSheet.create(
                 fontSize: scaled(20),
                 fontWeight: 'bold',
                 color: 'red'
-            }
+            },
+            root: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 1
+            },
+            foodWrapper: {
+                marginTop: themeSpacing(12),
+                width: '100%',
+                justifyContent: 'flex-start',
+                backgroundColor: colors.appBackground
+            },
+            itemWrapper: {
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginBottom: themeSpacing(4),
+            },
         }
     )
 );

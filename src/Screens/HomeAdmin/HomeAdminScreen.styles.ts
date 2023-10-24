@@ -49,7 +49,7 @@ export const styles = StyleSheet.create(
     //პლანშეტის სტილები -----------
     {
       screenRoot: {
-        marginVertical: themeSpacing(0.5),
+        marginVertical: themeSpacing(1.5),
         // borderWidth: 4,
       },
       foodViewWrapper: {
