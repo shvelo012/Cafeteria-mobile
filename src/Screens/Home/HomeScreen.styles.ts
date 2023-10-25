@@ -90,7 +90,7 @@ export const styles = StyleSheet.create(
 
                 },
                 foodWrapper: {
-                    marginTop: themeSpacing(0),
+                    marginTop: themeSpacing(6),
                     width: '100%',
                     backgroundColor: colors.appBackground,
 
@@ -98,11 +98,11 @@ export const styles = StyleSheet.create(
                 itemWrapper: {
                     flexDirection: 'row',
                     justifyContent: 'space-around',
-                    marginBottom: themeSpacing(1),
+                    marginBottom: themeSpacing(2),
 
                 },
                 HomeScreenContainer:{
-                    paddingTop:themeSpacing(0),
+                    // paddingTop:themeSpacing(0),
 
                 },
             }

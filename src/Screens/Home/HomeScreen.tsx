@@ -10,8 +10,7 @@ import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { scaled } from "../../components/scaler";
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
-import {DeviceType, deviceType} from "expo-device";
-import {themeSpacing} from "../../components/spacer";
+import { DeviceType, deviceType } from "expo-device";
 
 const HomeScreen: React.FC = observer(() => {
     const foodStore = useFoodStore();
@@ -48,7 +47,7 @@ const HomeScreen: React.FC = observer(() => {
 
 
 
-    let itemsPerRow = deviceType === DeviceType.PHONE ? 2 : 3;  // 2 for mobile 3 for tablet
+    const itemsPerRow = deviceType === DeviceType.PHONE ? 2 : 3;  // 2 for mobile 3 for tablet
 
     const groupedItems: FoodItemType[][] = [];
     for (let i = 0; i < foodItems.length; i += itemsPerRow) {
