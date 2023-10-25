@@ -10,7 +10,7 @@ export const styles = StyleSheet.create(
     //მობილურის სტილები
     {
       screenRoot: {
-        marginVertical: themeSpacing(8),
+        marginVertical: themeSpacing(6),
       },
       foodViewWrapper: {
         marginTop: themeSpacing(6),
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create(
         flexWrap: 'wrap',
       },
       headerMargin: {
-        marginTop: themeSpacing(10),
+        // marginTop: themeSpacing(1),
       },
       closeButtonContainer: {
         padding: scaled(2),

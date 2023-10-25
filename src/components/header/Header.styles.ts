@@ -4,7 +4,7 @@ import { scaled } from "../scaler";
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: 'lightblue'
+    // backgroundColor: 'lightblue'
   },
   leftIcon: {
     marginRight: themeSpacing(12),
