@@ -40,7 +40,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
   return (
 
-    <Spacer my={themeSpacing(0.1)} mx={0.5} style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <View style={styles.titleWrapper}>
         <TouchableOpacity
           onPress={() => setShowFullText(!showFullText)}
@@ -80,9 +80,8 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
             <Plus />
           </TouchableOpacity>
         </Row>
-
       </View>
-    </Spacer >
+    </View>
   );
 });
 

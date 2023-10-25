@@ -3,6 +3,7 @@ import { scaled } from "../scaler";
 import * as Device from 'expo-device';
 import { DeviceType } from "expo-device";
 import { themeSpacing } from "../spacer";
+import { theme } from "@storybook/react-native";
 export const deviceType = Device.deviceType;
 
 export const styles = StyleSheet.create(
@@ -38,8 +39,10 @@ export const styles = StyleSheet.create(
         height: scaled(40)
       },
       wrapper: {
-        borderWidth: 2,
-        width: scaled(130)
+        borderWidth: scaled(4),
+        width: scaled(130),
+        marginVertical: themeSpacing(2),
+        marginHorizontal: themeSpacing(6)
       },
       text: {
         alignSelf: 'center'
@@ -80,7 +83,9 @@ export const styles = StyleSheet.create(
       },
       wrapper: {
         borderWidth: 2,
-        width: scaled(130)
+        width: scaled(130),
+        marginHorizontal: themeSpacing(2),
+        marginVertical: themeSpacing(2),
       },
       text: {
         alignSelf: 'center',

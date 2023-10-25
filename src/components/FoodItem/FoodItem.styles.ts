@@ -4,7 +4,6 @@ import * as Device from 'expo-device';
 import { DeviceType } from "expo-device";
 import { themeSpacing } from "../spacer";
 import { colors } from "../colors";
-import { theme } from "@storybook/react-native";
 
 export const deviceType = Device.deviceType;
 
