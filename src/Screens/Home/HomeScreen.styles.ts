@@ -19,7 +19,7 @@ export const styles = StyleSheet.create(
                 right: themeSpacing(0.8),
                 top: themeSpacing(1),
                 color: colors.red,
-                fontSize: scaled(18),
+                fontSize: scaled(24),
                 fontWeight: 'bold',
                 justifyContent: "center",
             },
