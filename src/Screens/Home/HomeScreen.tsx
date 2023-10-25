@@ -10,6 +10,8 @@ import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { scaled } from "../../components/scaler";
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
+import {DeviceType, deviceType} from "expo-device";
+import {themeSpacing} from "../../components/spacer";
 
 const HomeScreen: React.FC = observer(() => {
     const foodStore = useFoodStore();
@@ -44,11 +46,14 @@ const HomeScreen: React.FC = observer(() => {
         );
     }
 
-    const groupedItems: FoodItemType[][] = [];
-    for (let i = 0; i < foodItems.length; i += 2) {
-        groupedItems.push([foodItems[i], foodItems[i + 1]]);
-    }
 
+
+    let itemsPerRow = deviceType === DeviceType.PHONE ? 2 : 3;  // 2 for mobile 3 for tablet
+
+    const groupedItems: FoodItemType[][] = [];
+    for (let i = 0; i < foodItems.length; i += itemsPerRow) {
+        groupedItems.push(foodItems.slice(i, i + itemsPerRow));
+    }
     return (
         <>
             <View
@@ -60,7 +65,7 @@ const HomeScreen: React.FC = observer(() => {
                 </TouchableHighlight>
             </View>
 
-            <ScrollView style={{ paddingTop: scaled(30) }}
+            <ScrollView style={styles.HomeScreenContainer}
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
