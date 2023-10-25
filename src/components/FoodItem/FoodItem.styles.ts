@@ -12,7 +12,7 @@ export const styles = StyleSheet.create(
     (deviceType === DeviceType.PHONE ?
         {//მობილურის სტილები
             foodContainer: {
-                borderWidth: scaled(1.5),
+                borderWidth: scaled(4),
                 width: scaled(135),
                 borderColor: colors.red,
                 backgroundColor: 'rgba(0, 0, 0, 0.05)',
