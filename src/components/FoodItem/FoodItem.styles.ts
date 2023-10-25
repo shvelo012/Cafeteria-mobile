@@ -4,6 +4,7 @@ import * as Device from 'expo-device';
 import { DeviceType } from "expo-device";
 import { themeSpacing } from "../spacer";
 import { colors } from "../colors";
+import { theme } from "@storybook/react-native";
 
 export const deviceType = Device.deviceType;
 
@@ -12,6 +13,8 @@ export const styles = StyleSheet.create(
     (deviceType === DeviceType.PHONE ?
         {//მობილურის სტილები
             foodContainer: {
+                marginBottom: themeSpacing(1),
+                marginHorizontal: themeSpacing(6),
                 borderWidth: scaled(4),
                 width: scaled(135),
                 borderColor: colors.red,

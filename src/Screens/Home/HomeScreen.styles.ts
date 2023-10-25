@@ -11,16 +11,33 @@ export const styles = StyleSheet.create(
     (deviceType === DeviceType.PHONE ?
         //მობილურის სტილები
         {
-            HomeScreenContainer:{
-              paddingTop:themeSpacing(5),
+            HomeScreenContainer: {
+                paddingTop: themeSpacing(5),
+            },
+            LogIntext: {
+                alignSelf: 'flex-end',
+                right: themeSpacing(0.8),
+                top: themeSpacing(1),
+                color: colors.red,
+                fontSize: scaled(18),
+                fontWeight: 'bold',
+                justifyContent: "center",
             },
             logInButton: {
-                alignSelf: 'flex-end',
-                right: themeSpacing(6),
-                top: themeSpacing(10),
+                backgroundColor: colors.appBackground,
                 color: colors.red,
-                fontSize: scaled(20),
-                fontWeight: 'bold'
+                fontSize: scaled(18),
+                fontWeight: 'bold',
+                paddingVertical: themeSpacing(1),
+                paddingHorizontal: themeSpacing(2),
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1,
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                width: '100%',
             },
             closedTextWrapper: {
 
@@ -33,13 +50,7 @@ export const styles = StyleSheet.create(
                 fontWeight: 'bold',
                 color: 'red'
             },
-            root: {
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 1
-            },
+
             foodWrapper: {
                 marginTop: themeSpacing(12),
                 width: '100%',
@@ -56,56 +67,63 @@ export const styles = StyleSheet.create(
         }
         :
         //პლანშეტის სტილები --------------------
-            {
-                logInButton: {
-                    alignSelf: 'flex-end',
-                    right: themeSpacing(0.8),
-                    top: themeSpacing(2),
-                    color: colors.red,
-                    fontSize: scaled(18),
-                    fontWeight: 'bold',
-                    justifyContent: "center",
+        {
+            LogIntext: {
+                alignSelf: 'flex-end',
+                right: themeSpacing(0.8),
+                top: themeSpacing(1),
+                color: colors.red,
+                fontSize: scaled(18),
+                fontWeight: 'bold',
+                justifyContent: "center",
+            },
+            logInButton: {
+                backgroundColor: colors.appBackground,
+                color: colors.red,
+                fontSize: scaled(18),
+                fontWeight: 'bold',
+                paddingVertical: themeSpacing(1),
+                paddingHorizontal: themeSpacing(2),
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1,
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                width: '100%',
+            },
 
 
-                },
-                closedTextWrapper: {
-                    flex: 1,
-                    marginTop: themeSpacing(0),
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                },
-                closedText: {
-                    fontSize: scaled(20),
-                    fontWeight: 'bold',
-                    color: 'red',
+            closedTextWrapper: {
+                flex: 1,
+                marginTop: themeSpacing(0),
+                justifyContent: 'center',
+                alignItems: 'center'
+            },
+            closedText: {
+                fontSize: scaled(20),
+                fontWeight: 'bold',
+                color: 'red',
 
-                },
-                root: {
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    zIndex: 1,
-                    alignItems: 'flex-end',
+            },
+            foodWrapper: {
+                marginTop: themeSpacing(6),
+                width: '100%',
+                backgroundColor: colors.appBackground,
 
-                },
-                foodWrapper: {
-                    marginTop: themeSpacing(6),
-                    width: '100%',
-                    backgroundColor: colors.appBackground,
+            },
+            itemWrapper: {
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                marginBottom: themeSpacing(2),
 
-                },
-                itemWrapper: {
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                    marginBottom: themeSpacing(2),
+            },
+            HomeScreenContainer: {
+                // paddingTop:themeSpacing(0),
 
-                },
-                HomeScreenContainer:{
-                    // paddingTop:themeSpacing(0),
-
-                },
-            }
+            },
+        }
 
 
     )

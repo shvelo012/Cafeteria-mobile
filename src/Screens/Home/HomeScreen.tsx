@@ -55,10 +55,9 @@ const HomeScreen: React.FC = observer(() => {
     }
     return (
         <>
-            <View
-                style={styles.root}>
+            <View style={styles.logInButton}>
                 <TouchableHighlight>
-                    <Text style={styles.logInButton} onPress={() => navigate(Screens.LoginScreenName)}>
+                    <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
                         Log In
                     </Text>
                 </TouchableHighlight>
