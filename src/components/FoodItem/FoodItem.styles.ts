@@ -48,34 +48,35 @@ export const styles = StyleSheet.create(
         {
             foodContainer: {
                 borderWidth: scaled(1.5),
-                width: scaled(115),
+                width: scaled(98),
                 borderColor: colors.red,
                 backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 borderRadius: scaled(10),
                 gap: themeSpacing(1),
+
             },
             title: {
-                fontSize: scaled(20),
-                marginLeft: themeSpacing(2),
-                marginRight: themeSpacing(2),
+                fontSize: scaled(14),
+                marginLeft: themeSpacing(1),
+                marginRight: themeSpacing(1),
                 alignSelf: 'flex-start',
                 fontWeight: 'bold'
             },
             foodImage: {
-                width: scaled(63),
-                height: scaled(63),
+                width: scaled(43),
+                height: scaled(43),
                 alignSelf: 'center',
-                padding: themeSpacing(7),
+                padding: themeSpacing(3.5),
 
             },
             price: {
-                marginLeft: themeSpacing(2),
+                marginLeft: themeSpacing(1),
                 fontWeight: '500',
             },
             quantity: {
-                marginLeft: themeSpacing(2),
+                marginLeft: themeSpacing(1),
                 fontWeight: '500',
-                marginBottom: themeSpacing(2),
+                marginBottom: themeSpacing(1),
             }
         }
     ));
