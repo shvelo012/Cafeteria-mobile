@@ -1,11 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { DeviceApi } from '../../../API/API';
-
-const getFoodAPI = `http://${DeviceApi}:4000/food/all`;
+import { APIs } from '../../../APIs/APIs';
 
 const fetchDataFunction = async () => {
   try {
-    const response = await fetch(getFoodAPI);
+    const response = await fetch(APIs.getFoodAPI);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

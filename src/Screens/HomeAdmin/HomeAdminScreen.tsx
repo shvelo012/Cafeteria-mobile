@@ -8,15 +8,13 @@ import { styles } from './HomeAdminScreen.styles';
 import FoodItemAdmin from '../../components/FoodItemAdmin/FoodItemAdmin';
 import { FoodItemType } from '../../types.ts/FoodItemType';
 import { useMutation } from '@tanstack/react-query';
-import { DeviceApi } from '../../API/API';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { observer } from 'mobx-react';
 import axios from 'axios';
 import { Row } from '../../components/row/Row';
 import { useFoodData } from '../Home/Queries/FoodQuery';
 import { Spacer } from '../../components/Spacer';
-const IsStoreOpenAPI = `http://${DeviceApi}:4000/admin/setIsOpen`;
-const resetQuantityAPI = `http://${DeviceApi}:4000/food/resetQuantity`;
+import { APIs } from '../../APIs/APIs';
 
 
 const HomeAdminScreen: React.FC = observer(() => {
@@ -30,19 +28,19 @@ const HomeAdminScreen: React.FC = observer(() => {
 
   const closeCafeteriaMutation = useMutation({
     mutationFn: (setIsOpen: { IsOpen: number }) => {
-      return axios.post(IsStoreOpenAPI, setIsOpen);
+      return axios.post(APIs.IsStoreOpenAPI, setIsOpen);
     },
   });
 
   const openCafeteriaMutation = useMutation({
     mutationFn: (setIsOpen: { IsOpen: number }) => {
-      return axios.post(IsStoreOpenAPI, setIsOpen);
+      return axios.post(APIs.IsStoreOpenAPI, setIsOpen);
     },
   });
 
   const resetQuantityMutation = useMutation({
     mutationFn: () => {
-      return axios.post(resetQuantityAPI);
+      return axios.post(APIs.resetQuantityAPI);
     },
   });
 

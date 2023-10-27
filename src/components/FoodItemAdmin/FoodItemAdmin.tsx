@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { FoodItemAdminProps } from './FoodItemAdmin.props';
-import { Spacer } from '../Spacer';
-import { themeSpacing } from '../spacer';
 import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustrations';
 import { styles } from './FoodItemAdmin.styles';
 import { Row } from '../row/Row';
 import { Minus, Plus } from '../../icons';
 import { Button } from '../Button/Button';
 import { useMutation } from '@tanstack/react-query';
-import { DeviceApi } from '../../API/API';
 import axios from 'axios';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { observer } from 'mobx-react';
-const getCredentialsAPI = `http://${DeviceApi}:4000/food/changeQuantity`;
+import { APIs } from '../../APIs/APIs';
 
 const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
@@ -23,7 +20,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
   const UpdateQuantityMutation = useMutation({
     mutationFn: (UpdateQuantity: { Quantity: number, Id: number }) => {
-      return axios.post(getCredentialsAPI, UpdateQuantity)
+      return axios.post(APIs.getCredentialsAPI, UpdateQuantity)
     },
   })
   useEffect(() => {

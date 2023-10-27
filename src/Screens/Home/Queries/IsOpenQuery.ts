@@ -1,11 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { DeviceApi } from '../../../API/API';
-
-const IsOpenAPI = `http://${DeviceApi}:4000/admin/getIsOpen`;
+import { APIs } from '../../../APIs/APIs';
 
 export const fetchIsOpenData = async () => {
   try {
-    const response = await fetch(IsOpenAPI);
+    const response = await fetch(APIs.IsOpenAPI);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

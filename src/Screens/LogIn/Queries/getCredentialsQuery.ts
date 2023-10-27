@@ -1,12 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { DeviceApi } from '../../../API/API';
-
-'axios';
-const getCredentialsAPI = `http://${DeviceApi}:4000/admin/getcredentials`;
+import { APIs } from '../../../APIs/APIs';
 
 const fetchCredentialsFucntion = async () => {
   try {
-    const response = await fetch(getCredentialsAPI);
+    const response = await fetch(APIs.getCredentialsAPI);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

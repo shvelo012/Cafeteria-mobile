@@ -7,10 +7,9 @@ import { styles } from './LoginScreen.styles';
 import { ArrowLeft } from '../../icons';
 import Header from '../../components/header/Header';
 import { Button } from '../../components/Button/Button';
-import { DeviceApi } from '../../API/API';
 import axios from 'axios';
 import { useCredentialsQuery } from './Queries/getCredentialsQuery';
-const openStoreAPI = `http://${DeviceApi}:4000/admin/setIsOpen`;
+import { APIs } from '../../APIs/APIs';
 
 const LoginScreen: React.FC = () => {
   const { credentialsData, credentialsError, credentialsIsLoading } = useCredentialsQuery();
@@ -19,7 +18,7 @@ const LoginScreen: React.FC = () => {
 
   const openCafeteriaMutation = useMutation({
     mutationFn: (setIsOpen: { IsOpen: number }) => {
-      return axios.post(openStoreAPI, setIsOpen)
+      return axios.post(APIs.openStoreAPI, setIsOpen)
     },
   });
 
