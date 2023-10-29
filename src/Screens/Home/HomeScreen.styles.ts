@@ -93,8 +93,6 @@ export const styles = StyleSheet.create(
                 alignItems: 'center',
                 width: '100%',
             },
-
-
             closedTextWrapper: {
                 flex: 1,
                 marginTop: themeSpacing(0),

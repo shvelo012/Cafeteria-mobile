@@ -10,7 +10,6 @@ import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
 import { DeviceType, deviceType } from "expo-device";
-import { ScreenContent, ScreenRoot } from '../../ScreenRoot/ScreenRoot';
 import { Spacer } from '../../components/Spacer';
 
 const HomeScreen: React.FC = observer(() => {
@@ -55,7 +54,7 @@ const HomeScreen: React.FC = observer(() => {
         groupedItems.push(foodItems.slice(i, i + itemsPerRow));
     }
     return (
-        <ScreenRoot>
+        <>
             <View style={styles.logInButton}>
                 <Spacer px={3} py={4}>
                     <TouchableHighlight>
@@ -65,41 +64,39 @@ const HomeScreen: React.FC = observer(() => {
                     </TouchableHighlight>
                 </Spacer>
             </View>
-            <ScreenContent>
-                <ScrollView style={styles.HomeScreenContainer}
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={onRefresh}
-                        />
-                    }
-                >
-                    {isOpenData.IsOpen === 0 ? (
-                        <View style={styles.closedTextWrapper}>
-                            <Text style={styles.closedText}>
-                                კაფეტერია დაკეტილია
-                            </Text>
-                        </View>
+            <ScrollView style={styles.HomeScreenContainer}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+            >
+                {isOpenData.IsOpen === 0 ? (
+                    <View style={styles.closedTextWrapper}>
+                        <Text style={styles.closedText}>
+                            კაფეტერია დაკეტილია
+                        </Text>
+                    </View>
 
-                    ) : (
-                        <View
-                            style={styles.foodWrapper}
-                        >
-                            {groupedItems.map((itemPair: FoodItemType[], index: number) => (
-                                <View
-                                    key={index}
-                                    style={styles.itemWrapper}
-                                >
-                                    {itemPair.map((item: FoodItemType) => (
-                                        <FoodItem key={item.ID} info={item} />
-                                    ))}
-                                </View>
-                            ))}
-                        </View>
-                    )}
-                </ScrollView>
-            </ScreenContent>
-        </ScreenRoot>
+                ) : (
+                    <View
+                        style={styles.foodWrapper}
+                    >
+                        {groupedItems.map((itemPair: FoodItemType[], index: number) => (
+                            <View
+                                key={index}
+                                style={styles.itemWrapper}
+                            >
+                                {itemPair.map((item: FoodItemType) => (
+                                    <FoodItem key={item.ID} info={item} />
+                                ))}
+                            </View>
+                        ))}
+                    </View>
+                )}
+            </ScrollView>
+        </>
     );
 });
 

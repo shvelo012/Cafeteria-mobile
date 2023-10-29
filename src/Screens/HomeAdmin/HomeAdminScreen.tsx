@@ -15,6 +15,7 @@ import { Row } from '../../components/row/Row';
 import { useFoodData } from '../Home/Queries/FoodQuery';
 import { Spacer } from '../../components/Spacer';
 import { APIs } from '../../APIs/APIs';
+import { ScreenRoot } from '../../ScreenRoot/ScreenRoot';
 
 
 const HomeAdminScreen: React.FC = observer(() => {
@@ -92,11 +93,9 @@ const HomeAdminScreen: React.FC = observer(() => {
   }
 
   return (
-    <>
-      <View style={styles.headerMargin}>
-        <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.LoginScreenName)} />
-      </View>
+    <ScreenRoot>
       <View style={styles.screenRoot}>
+        <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.LoginScreenName)} />
         <ScrollView>
           <Row>
             <View style={styles.closeButtonContainer}>
@@ -126,8 +125,7 @@ const HomeAdminScreen: React.FC = observer(() => {
           <Spacer p={5} />
         </ScrollView>
       </View>
-
-    </>
+    </ScreenRoot>
   );
 });
 
