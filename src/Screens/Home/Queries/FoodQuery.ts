@@ -5,7 +5,7 @@ const fetchDataFunction = async () => {
   try {
     const response = await fetch(APIs.getFoodAPI);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error('Network response was not ok in admin');
     }
     const data = await response.json();
     return data;

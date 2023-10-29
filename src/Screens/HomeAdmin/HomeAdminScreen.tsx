@@ -82,7 +82,7 @@ const HomeAdminScreen: React.FC = observer(() => {
   };
 
 
-  if (!foodItems || foodQuery.foodError || foodQuery.foodLoading) {
+  if (!foodItems || foodQuery.foodError) {
     return (
       <View>
         <Text>Loading...</Text>

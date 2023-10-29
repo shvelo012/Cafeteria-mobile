@@ -7,10 +7,10 @@ import FoodItem from '../../components/FoodItem/FoodItem';
 import { FoodItemType } from '../../types.ts/FoodItemType';
 import { observer } from 'mobx-react';
 import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
-import { scaled } from "../../components/scaler";
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
 import { DeviceType, deviceType } from "expo-device";
+import { ScreenRoot } from '../../ScreenRoot/ScreenRoot';
 
 const HomeScreen: React.FC = observer(() => {
     const foodStore = useFoodStore();
@@ -54,7 +54,7 @@ const HomeScreen: React.FC = observer(() => {
         groupedItems.push(foodItems.slice(i, i + itemsPerRow));
     }
     return (
-        <>
+        <ScreenRoot>
             <View style={styles.logInButton}>
                 <TouchableHighlight>
                     <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
@@ -95,8 +95,7 @@ const HomeScreen: React.FC = observer(() => {
                     </View>
                 )}
             </ScrollView>
-
-        </>
+        </ScreenRoot>
     );
 });
 

@@ -10,6 +10,7 @@ import { Button } from '../../components/Button/Button';
 import axios from 'axios';
 import { useCredentialsQuery } from './Queries/getCredentialsQuery';
 import { APIs } from '../../APIs/APIs';
+import { ScreenRoot } from '../../ScreenRoot/ScreenRoot';
 
 const LoginScreen: React.FC = () => {
   const { credentialsData, credentialsError, credentialsIsLoading } = useCredentialsQuery();
@@ -31,7 +32,7 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <>
+    <ScreenRoot>
       {credentialsIsLoading ?
         <View style={styles.loader}>
           <Text>Loading...</Text>
@@ -62,7 +63,7 @@ const LoginScreen: React.FC = () => {
           </View>
         </KeyboardAvoidingView>
       }
-    </>
+    </ScreenRoot>
   );
 };
 

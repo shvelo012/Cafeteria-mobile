@@ -16,7 +16,7 @@ const fetchCredentialsFucntion = async () => {
 
 export const useCredentialsQuery = () => {
   const { data: credentialsData, error: credentialsError, isLoading: credentialsIsLoading } = useQuery({
-    queryKey: ['food'],
+    queryKey: ['credentials'],
     queryFn: fetchCredentialsFucntion,
   });
 
