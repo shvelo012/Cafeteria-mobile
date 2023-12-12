@@ -11,8 +11,12 @@ import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
 import { DeviceType, deviceType } from "expo-device";
 import { Spacer } from '../../components/Spacer';
+import { Root } from '../../ScreenRoot/ScreenRoot';
+import Constants from 'expo-constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeScreen: React.FC = observer(() => {
+    console.log(Constants.statusBarHeight);
     const foodStore = useFoodStore();
     useEffect(() => {
         foodStore.reset();
@@ -54,49 +58,51 @@ const HomeScreen: React.FC = observer(() => {
         groupedItems.push(foodItems.slice(i, i + itemsPerRow));
     }
     return (
-        <>
-            <View style={styles.logInButton}>
-                <Spacer px={3} py={4}>
-                    <TouchableHighlight>
-                        <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
-                            Log In
-                        </Text>
-                    </TouchableHighlight>
-                </Spacer>
-            </View>
-            <ScrollView style={styles.HomeScreenContainer}
-                refreshControl={
-                    <RefreshControl
-                        refreshing={refreshing}
-                        onRefresh={onRefresh}
-                    />
-                }
-            >
-                {isOpenData.IsOpen === 0 ? (
-                    <View style={styles.closedTextWrapper}>
-                        <Text style={styles.closedText}>
-                            კაფეტერია დაკეტილია
-                        </Text>
-                    </View>
+        <SafeAreaView>
+            <Root>
+                <View style={styles.logInButton}>
+                    <Spacer px={3} py={4}>
+                        <TouchableHighlight>
+                            <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
+                                Log In
+                            </Text>
+                        </TouchableHighlight>
+                    </Spacer>
+                </View>
+                <ScrollView
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                    }
+                >
+                    {isOpenData.IsOpen === 0 ? (
+                        <View style={styles.closedTextWrapper}>
+                            <Text style={styles.closedText}>
+                                კაფეტერია დაკეტილია
+                            </Text>
+                        </View>
 
-                ) : (
-                    <View
-                        style={styles.foodWrapper}
-                    >
-                        {groupedItems.map((itemPair: FoodItemType[], index: number) => (
-                            <View
-                                key={index}
-                                style={styles.itemWrapper}
-                            >
-                                {itemPair.map((item: FoodItemType) => (
-                                    <FoodItem key={item.ID} info={item} />
-                                ))}
-                            </View>
-                        ))}
-                    </View>
-                )}
-            </ScrollView>
-        </>
+                    ) : (
+                        <View
+                            style={styles.foodWrapper}
+                        >
+                            {groupedItems.map((itemPair: FoodItemType[], index: number) => (
+                                <View
+                                    key={index}
+                                    style={styles.itemWrapper}
+                                >
+                                    {itemPair.map((item: FoodItemType) => (
+                                        <FoodItem key={item.ID} info={item} />
+                                    ))}
+                                </View>
+                            ))}
+                        </View>
+                    )}
+                </ScrollView>
+            </Root>
+        </SafeAreaView>
     );
 });
 

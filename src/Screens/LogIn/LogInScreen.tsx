@@ -10,7 +10,8 @@ import { Button } from '../../components/Button/Button';
 import axios from 'axios';
 import { useCredentialsQuery } from './Queries/getCredentialsQuery';
 import { APIs } from '../../APIs/APIs';
-import { ScreenRoot } from '../../ScreenRoot/ScreenRoot';
+import { Root } from '../../ScreenRoot/ScreenRoot';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const LoginScreen: React.FC = () => {
   const { credentialsData, credentialsError, credentialsIsLoading } = useCredentialsQuery();
@@ -32,15 +33,15 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <ScreenRoot>
-      {credentialsIsLoading ?
-        <View style={styles.loader}>
-          <Text>Loading...</Text>
-          <ActivityIndicator />
-        </View>
-        :
-        <KeyboardAvoidingView>
-          <View style={styles.screenRoot}>
+    <SafeAreaView>
+      <Root>
+        {credentialsIsLoading ?
+          <View style={styles.loader}>
+            <Text>Loading...</Text>
+            <ActivityIndicator />
+          </View>
+          :
+          <KeyboardAvoidingView>
             <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.HomeScreenName)} />
             <View style={styles.container}>
               <Text style={styles.title}>Login</Text>
@@ -60,10 +61,10 @@ const LoginScreen: React.FC = () => {
                 onPress={() => handleLogin()}
                 disabled={!!credentialsError || credentialsIsLoading || openCafeteriaMutation.isLoading} />
             </View>
-          </View>
-        </KeyboardAvoidingView>
-      }
-    </ScreenRoot>
+          </KeyboardAvoidingView>
+        }
+      </Root>
+    </SafeAreaView>
   );
 };
 

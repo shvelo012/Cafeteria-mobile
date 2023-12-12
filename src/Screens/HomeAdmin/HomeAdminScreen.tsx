@@ -15,7 +15,8 @@ import { Row } from '../../components/row/Row';
 import { useFoodData } from '../Home/Queries/FoodQuery';
 import { Spacer } from '../../components/Spacer';
 import { APIs } from '../../APIs/APIs';
-import { ScreenRoot } from '../../ScreenRoot/ScreenRoot';
+import { Root } from '../../ScreenRoot/ScreenRoot';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const HomeAdminScreen: React.FC = observer(() => {
@@ -93,8 +94,8 @@ const HomeAdminScreen: React.FC = observer(() => {
   }
 
   return (
-    <ScreenRoot>
-      <View style={styles.screenRoot}>
+    <SafeAreaView>
+      <Root>
         <Header leftIcon={<ArrowLeft />} onLeftIconPress={() => navigate(Screens.LoginScreenName)} />
         <ScrollView>
           <Row>
@@ -124,8 +125,8 @@ const HomeAdminScreen: React.FC = observer(() => {
           </View>
           <Spacer p={5} />
         </ScrollView>
-      </View>
-    </ScreenRoot>
+      </Root>
+    </SafeAreaView>
   );
 });
 

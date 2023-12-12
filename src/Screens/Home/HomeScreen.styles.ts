@@ -11,9 +11,6 @@ export const styles = StyleSheet.create(
     (deviceType === DeviceType.PHONE ?
         //მობილურის სტილები
         {
-            HomeScreenContainer: {
-                paddingTop: themeSpacing(5),
-            },
             LogIntext: {
                 alignSelf: 'flex-end',
                 right: themeSpacing(0.8),
@@ -30,9 +27,9 @@ export const styles = StyleSheet.create(
                 fontWeight: 'bold',
                 paddingVertical: themeSpacing(1),
                 paddingHorizontal: themeSpacing(2),
-                position: 'absolute',
-                top: 0,
-                left: 0,
+                // position: 'absolute',
+                // top: 0,
+                // left: 0,
                 zIndex: 1,
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
@@ -115,10 +112,6 @@ export const styles = StyleSheet.create(
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 marginBottom: themeSpacing(2),
-
-            },
-            HomeScreenContainer: {
-                // paddingTop:themeSpacing(0),
 
             },
         }

@@ -9,9 +9,6 @@ export const styles = StyleSheet.create(
   (deviceType === DeviceType.PHONE ?
     //მობილურის სტილები
     {
-      screenRoot: {
-        marginVertical: themeSpacing(2),
-      },
       foodViewWrapper: {
         marginTop: themeSpacing(6),
         width: '100%',

@@ -10,9 +10,6 @@ export const styles = StyleSheet.create(
   (deviceType === DeviceType.PHONE ?
     // მობილურის სტილები
     {
-      screenRoot: {
-        marginVertical: themeSpacing(2),
-      },
       loader: {
         flex: 1,
         justifyContent: 'center',
@@ -41,9 +38,6 @@ export const styles = StyleSheet.create(
     :
     // პლანშეტის სტილები --------------------------------------------
     {
-      screenRoot: {
-        marginVertical: themeSpacing(2),
-      },
       loader: {
         flex: 1,
         justifyContent: 'center',
