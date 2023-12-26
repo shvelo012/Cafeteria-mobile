@@ -16,7 +16,6 @@ import Constants from 'expo-constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeScreen: React.FC = observer(() => {
-    console.log(Constants.statusBarHeight);
     const foodStore = useFoodStore();
     useEffect(() => {
         foodStore.reset();
