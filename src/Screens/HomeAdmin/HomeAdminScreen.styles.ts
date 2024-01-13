@@ -32,14 +32,16 @@ export const styles = StyleSheet.create(
         top: 0,
         left: scaled(18),
         zIndex: 1,
+
       },
       closeButton: {
         backgroundColor: 'red',
-        padding: themeSpacing(1),
-        borderRadius: scaled(4),
+        padding: themeSpacing(1.2),
+        borderRadius: scaled(8),
       },
       closeButtonText: {
         color: 'white',
+
       },
     }
     :

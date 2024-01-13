@@ -4,6 +4,7 @@ import { ActivityIndicator, TouchableOpacity, View, Text } from 'react-native';
 import { Row } from '../row/Row';
 import { colors } from '../colors';
 
+// @ts-ignore
 import { Spacer } from '../Spacer';
 
 import { ButtonProps } from './Button.props';
