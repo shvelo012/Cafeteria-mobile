@@ -14,7 +14,7 @@ import { APIs } from '../../APIs/APIs';
 
 const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
-  const [quantity, setQuantity] = useState<number>();
+  const [quantity, setQuantity] = useState<number>(0);
   const [showFullText, setShowFullText] = useState(false);
   const { foodItems, changeQuantity } = useFoodStore();
 
@@ -24,7 +24,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
     },
   })
   useEffect(() => {
-    setQuantity(info?.Quantity);
+    setQuantity(info?.Quantity ?? 0);
   }, []);
   if (!info) {
     return;
@@ -34,6 +34,12 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
     UpdateQuantityMutation.mutate({ Quantity: quantity!, Id: info.ID });
     changeQuantity(quantity!, info.ID);
   }
+
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
 
   return (
 
@@ -57,7 +63,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         <Row style={styles.plusMinusSaveRow}>
           <TouchableOpacity
             style={styles.touchableMinus}
-            onPress={() => setQuantity(prevQuantity => prevQuantity! - 1)}>
+            onPress={() => decreaseQuantity()}>
             <Minus />
           </TouchableOpacity>
 
