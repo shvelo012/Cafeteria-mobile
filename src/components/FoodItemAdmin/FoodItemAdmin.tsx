@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import { FoodItemAdminProps } from './FoodItemAdmin.props';
 import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustrations';
 import { styles } from './FoodItemAdmin.styles';
@@ -44,7 +44,8 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
   return (
 
     <View style={styles.wrapper}>
-      <View style={styles.titleWrapper}>
+
+      <View style={styles.titleHeaderWrapper}>
         <TouchableOpacity
           onPress={() => setShowFullText(!showFullText)}
         >
@@ -85,6 +86,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         </Row>
       </View>
     </View>
+
   );
 });
 

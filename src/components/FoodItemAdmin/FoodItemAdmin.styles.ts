@@ -54,6 +54,7 @@ export const styles = StyleSheet.create(
                     gap: themeSpacing(1),
                     backgroundColor: 'rgba(0, 0, 0, 0.05)',
                     padding: themeSpacing(2),
+
                 },
                 text: {
                     alignSelf: 'center'
@@ -68,7 +69,11 @@ export const styles = StyleSheet.create(
             //პლანშეტის სტილები ----------------------------
             {
                 titleWrapper: {
-                    borderBottomWidth: scaled(1)
+
+                },
+                titleHeaderWrapper:{
+                    borderBottomWidth: 1,
+                    width: '100%',
                 },
                 title: {
                     fontSize: scaled(22),
@@ -92,21 +97,31 @@ export const styles = StyleSheet.create(
                     height: scaled(40)
                 },
                 button: {
-                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    borderRadius: scaled(10),
                 },
                 wrapper: {
-                    borderWidth: 2,
-                    width: scaled(130),
-                    marginHorizontal: themeSpacing(2),
+                    borderWidth: scaled(4),
+                    width: scaled(140),
                     marginVertical: themeSpacing(2),
+                    marginHorizontal: themeSpacing(5),
+                    borderColor: colors.red,
+                    borderRadius: scaled(10),
+                    gap: themeSpacing(1),
+                    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                    justifyContent: 'center',
+                    alignItems  : 'center',
+                    alignSelf: 'center'
+
                 },
                 text: {
                     alignSelf: 'center',
                     fontSize: scaled(10),
                 },
                 ilustrationSize: {
-                    height: scaled(60),
-                    width: scaled(120)
+                    height: scaled(40),
+                    width: scaled(80),
+
                 },
 
             }

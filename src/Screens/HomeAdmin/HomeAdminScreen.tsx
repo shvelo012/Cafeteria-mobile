@@ -13,6 +13,7 @@ import { observer } from 'mobx-react';
 import axios from 'axios';
 import { Row } from '../../components/row/Row';
 import { useFoodData } from '../Home/Queries/FoodQuery';
+// @ts-ignore
 import { Spacer } from '../../components/Spacer';
 import { APIs } from '../../APIs/APIs';
 import { Root } from '../../ScreenRoot/ScreenRoot';
