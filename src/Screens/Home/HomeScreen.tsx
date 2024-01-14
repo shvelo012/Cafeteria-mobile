@@ -69,15 +69,11 @@ const HomeScreen: React.FC = observer(() => {
             >
             <Root>
                 <View style={styles.logInButton}>
-                    <Spacer px={3} py={4}>
                         <TouchableHighlight>
-
                             <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
                                 Log In
                             </Text>
-
                         </TouchableHighlight>
-                    </Spacer>
                 </View>
 
                     {isOpenData.IsOpen === 0 ? (

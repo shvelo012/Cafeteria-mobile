@@ -101,8 +101,8 @@ export const styles = StyleSheet.create(
                     borderRadius: scaled(10),
                 },
                 wrapper: {
-                    borderWidth: scaled(4),
-                    width: scaled(140),
+                    borderWidth: scaled(3),
+                    width: scaled(120),
                     marginVertical: themeSpacing(2),
                     marginHorizontal: themeSpacing(5),
                     borderColor: colors.red,
@@ -111,8 +111,9 @@ export const styles = StyleSheet.create(
                     backgroundColor: 'rgba(0, 0, 0, 0.05)',
                     justifyContent: 'center',
                     alignItems  : 'center',
-                    alignSelf: 'center'
-
+                    alignSelf: 'center',
+                    paddingBottom: themeSpacing(1),
+                    paddingTop: themeSpacing(0.5),
                 },
                 text: {
                     alignSelf: 'center',

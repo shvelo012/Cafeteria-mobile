@@ -12,7 +12,7 @@ export const styles = StyleSheet.create(
             //მობილურის სტილები
             {
                 LogIntext: {
-                    alignSelf: 'flex-start',
+                    alignSelf: 'flex-end',
                     right: themeSpacing(0.8),
                     top: themeSpacing(1),
                     color: colors.red,
@@ -27,9 +27,7 @@ export const styles = StyleSheet.create(
                     fontWeight: 'bold',
                     paddingVertical: themeSpacing(1),
                     paddingHorizontal: themeSpacing(2),
-                    // position: 'absolute',
-                    // top: 0,
-                    // left: 0,
+
                     zIndex: 1,
                     flexDirection: 'row',
                     justifyContent: 'flex-end',
@@ -70,15 +68,16 @@ export const styles = StyleSheet.create(
                     color: colors.red,
                     fontSize: scaled(18),
                     fontWeight: 'bold',
-
-
                 },
 
                 logInButton: {
                     backgroundColor: colors.appBackground,
                     color: colors.red,
-                    fontSize: scaled(18),
                     fontWeight: 'bold',
+                    paddingVertical: themeSpacing(1),
+                    justifyContent: 'center',
+                    alignSelf: 'flex-end',
+                    paddingRight: themeSpacing(3),
                 },
                 closedTextWrapper: {
                     flex: 1,
