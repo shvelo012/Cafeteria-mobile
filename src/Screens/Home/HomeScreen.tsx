@@ -10,6 +10,7 @@ import { useFoodStore } from '../../stores/FoodStore/FoodStore.Provider';
 import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
 import { DeviceType, deviceType } from "expo-device";
+// @ts-ignore
 import { Spacer } from '../../components/Spacer';
 import { Root } from '../../ScreenRoot/ScreenRoot';
 import Constants from 'expo-constants';
@@ -58,24 +59,23 @@ const HomeScreen: React.FC = observer(() => {
     }
     return (
         <SafeAreaView>
+            <ScrollView
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+            >
             <Root>
                 <View style={styles.logInButton}>
-                    <Spacer px={3} py={4}>
                         <TouchableHighlight>
                             <Text style={styles.LogIntext} onPress={() => navigate(Screens.LoginScreenName)}>
                                 Log In
                             </Text>
                         </TouchableHighlight>
-                    </Spacer>
                 </View>
-                <ScrollView
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={onRefresh}
-                        />
-                    }
-                >
+
                     {isOpenData.IsOpen === 0 ? (
                         <View style={styles.closedTextWrapper}>
                             <Text style={styles.closedText}>
@@ -99,9 +99,10 @@ const HomeScreen: React.FC = observer(() => {
                             ))}
                         </View>
                     )}
-                </ScrollView>
             </Root>
+    </ScrollView>
         </SafeAreaView>
+
     );
 });
 

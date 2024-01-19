@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import { FoodItemAdminProps } from './FoodItemAdmin.props';
 import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustrations';
 import { styles } from './FoodItemAdmin.styles';
@@ -14,7 +14,7 @@ import { APIs } from '../../APIs/APIs';
 
 const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
-  const [quantity, setQuantity] = useState<number>();
+  const [quantity, setQuantity] = useState<number>(0);
   const [showFullText, setShowFullText] = useState(false);
   const { foodItems, changeQuantity } = useFoodStore();
 
@@ -24,7 +24,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
     },
   })
   useEffect(() => {
-    setQuantity(info?.Quantity);
+    setQuantity(info?.Quantity ?? 0);
   }, []);
   if (!info) {
     return;
@@ -35,10 +35,17 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
     changeQuantity(quantity!, info.ID);
   }
 
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
   return (
 
     <View style={styles.wrapper}>
-      <View style={styles.titleWrapper}>
+
+      <View style={styles.titleHeaderWrapper}>
         <TouchableOpacity
           onPress={() => setShowFullText(!showFullText)}
         >
@@ -57,7 +64,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         <Row style={styles.plusMinusSaveRow}>
           <TouchableOpacity
             style={styles.touchableMinus}
-            onPress={() => setQuantity(prevQuantity => prevQuantity! - 1)}>
+            onPress={() => decreaseQuantity()}>
             <Minus />
           </TouchableOpacity>
 
@@ -79,6 +86,7 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
         </Row>
       </View>
     </View>
+
   );
 });
 
