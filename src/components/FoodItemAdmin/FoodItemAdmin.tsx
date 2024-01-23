@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { FoodItemAdminProps } from './FoodItemAdmin.props';
 import { FoodEnum, FoodIllustration } from '../../Illustrations/FoodIllustrations';
 import { styles } from './FoodItemAdmin.styles';
@@ -20,12 +20,13 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
 
   const UpdateQuantityMutation = useMutation({
     mutationFn: (UpdateQuantity: { Quantity: number, Id: number }) => {
-      return axios.post(APIs.getCredentialsAPI, UpdateQuantity)
+      return axios.post(APIs.changeQuantity, UpdateQuantity)
     },
   })
   useEffect(() => {
     setQuantity(info?.Quantity ?? 0);
   }, []);
+
   if (!info) {
     return;
   }
@@ -42,51 +43,51 @@ const FoodItemAdmin: React.FC<FoodItemAdminProps> = observer(({ info }) => {
   };
 
   return (
+    <ScrollView>
+      <View style={styles.wrapper}>
 
-    <View style={styles.wrapper}>
-
-      <View style={styles.titleHeaderWrapper}>
-        <TouchableOpacity
-          onPress={() => setShowFullText(!showFullText)}
-        >
-          <Text numberOfLines={showFullText ? 0 : 1} ellipsizeMode="tail" style={styles.title}>
-            {info.Name}
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      <FoodIllustration style={styles.ilustrationSize} food={FoodEnum[info.Name as keyof typeof FoodEnum]} />
-
-      <View style={styles.titleWrapper}>
-        <Text style={styles.text}>ფასი: {info.Price}</Text>
-        <Text style={styles.text}>{quantity}</Text>
-
-        <Row style={styles.plusMinusSaveRow}>
+        <View style={styles.titleHeaderWrapper}>
           <TouchableOpacity
-            style={styles.touchableMinus}
-            onPress={() => decreaseQuantity()}>
-            <Minus />
+            onPress={() => setShowFullText(!showFullText)}
+          >
+            <Text numberOfLines={showFullText ? 0 : 1} ellipsizeMode="tail" style={styles.title}>
+              {info.Name}
+            </Text>
           </TouchableOpacity>
+        </View>
 
-          <Button
-            text='Save'
-            onPress={() => handleSave()}
-            disabled={quantity === foodItems.find(item => item.ID === info.ID)?.Quantity}
-            color='red'
-            loading={UpdateQuantityMutation.isLoading}
-            inline
-            style={styles.button}
-          />
+        <FoodIllustration style={styles.ilustrationSize} food={FoodEnum[info.Name as keyof typeof FoodEnum]} />
 
-          <TouchableOpacity
-            style={styles.touchablePlus}
-            onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
-            <Plus />
-          </TouchableOpacity>
-        </Row>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.text}>ფასი: {info.Price}</Text>
+          <Text style={styles.text}>{quantity}</Text>
+
+          <Row style={styles.plusMinusSaveRow}>
+            <TouchableOpacity
+              style={styles.touchableMinus}
+              onPress={() => decreaseQuantity()}>
+              <Minus />
+            </TouchableOpacity>
+
+            <Button
+              text='Save'
+              onPress={() => handleSave()}
+              disabled={quantity === foodItems.find(item => item.ID === info.ID)?.Quantity}
+              color='red'
+              loading={UpdateQuantityMutation.isLoading}
+              inline
+              style={styles.button}
+            />
+
+            <TouchableOpacity
+              style={styles.touchablePlus}
+              onPress={() => setQuantity(prevQuantity => prevQuantity! + 1)}>
+              <Plus />
+            </TouchableOpacity>
+          </Row>
+        </View>
       </View>
-    </View>
-
+    </ScrollView>
   );
 });
 
