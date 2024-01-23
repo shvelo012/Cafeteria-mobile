@@ -11,9 +11,7 @@ import { useFoodData } from './Queries/FoodQuery';
 import { useIsOpenData } from './Queries/IsOpenQuery';
 import { DeviceType, deviceType } from "expo-device";
 // @ts-ignore
-import { Spacer } from '../../components/Spacer';
 import { Root } from '../../ScreenRoot/ScreenRoot';
-import Constants from 'expo-constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeScreen: React.FC = observer(() => {
@@ -21,10 +19,8 @@ const HomeScreen: React.FC = observer(() => {
     useEffect(() => {
         foodStore.reset();
     }, [foodStore]);
-
     const { foodData, foodLoading, foodRefetch } = useFoodData();
     const { isOpenData, isOpenRefetch } = useIsOpenData();
-
     const [foodItems, setFoodItems] = useState<FoodItemType[]>([]);
     const [refreshing, setRefreshing] = useState<boolean>(false);
 
@@ -33,13 +29,11 @@ const HomeScreen: React.FC = observer(() => {
             setFoodItems(foodData.data);
         }
     }, [foodData]);
-
     const onRefresh = () => {
         foodRefetch();
         isOpenRefetch();
         setRefreshing(false);
     };
-
     if (!foodData || !isOpenData || foodLoading) {
         return (
             <View>
@@ -48,11 +42,7 @@ const HomeScreen: React.FC = observer(() => {
             </View>
         );
     }
-
-
-
     const itemsPerRow = deviceType === DeviceType.PHONE ? 2 : 3;  // 2 for mobile 3 for tablet
-
     const groupedItems: FoodItemType[][] = [];
     for (let i = 0; i < foodItems.length; i += itemsPerRow) {
         groupedItems.push(foodItems.slice(i, i + itemsPerRow));
